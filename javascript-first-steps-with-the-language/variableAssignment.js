@@ -1,6 +1,5 @@
 console.log("Work with variable assignment");
 
-const age = 35;
 const firstName = "Wagner";
 const lastName = "Oliveira";
 
@@ -13,3 +12,8 @@ counter = counter + 1;
 
 const fullName = firstName + lastName;
 console.log(fullName);
+
+let age; //declaring variable
+age = 35; //assigning value
+age = age + 1;
+console.log(age);
