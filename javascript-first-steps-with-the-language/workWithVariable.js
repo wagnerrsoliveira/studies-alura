@@ -3,3 +3,6 @@ console.log("Work with variable");
 
 const age = 29;
 const name = "Wagner";
+
+//don't do it
+//month = "January"
