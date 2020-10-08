@@ -17,13 +17,16 @@ console.log(destinationList);
 const canBuy = (buyersAge >= 18 || isAccompanied);
 
 let counter = 0;
+let fateExists = false;
 
 while (counter < 3) {
-    
+
     if(destinationList[counter]==destination){
-        console.log("Fate exists")
-    }else{
-        console.log("Fate doesn't exists")
+        fateExists=true;
+        break;
     }
+
     counter = counter + 1;
 }
+
+console.log("Fate exists: ",fateExists)
