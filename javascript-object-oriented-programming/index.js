@@ -1,11 +1,21 @@
-const customer1Name =  "Wagner";
-const customer1Document = 11122233309;
-const customer1Agency = 1001;
-const customer1Balance = 0;
+class Customer {
+    name;
+    document;
+    agency;
+    balance;
+}
 
-const customer2Name =  "Roberto";
-const customer2Document = 88822233309;
-const customer2Agency = 1001;
-const customer2Balance = 0;
+const customer1 = new Customer();
+const customer2 = new Customer();
 
-console.log(customer1Name);
+customer1.name =  "Wagner";
+customer1.document = 11122233309;
+customer1.agency = 1001;
+customer1.balance = 0;
+
+customer2.name =  "Roberto";
+customer2.document = 88822233309;
+customer2.agency = 1001;
+customer2.balance = 0;
+
+console.log(customer1,customer2);
