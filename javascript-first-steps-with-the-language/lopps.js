@@ -21,12 +21,25 @@ let fateExists = false;
 
 while (counter < 3) {
 
-    if(destinationList[counter]==destination){
-        fateExists=true;
+    if (destinationList[counter] == destination) {
+        fateExists = true;
         break;
     }
 
     counter = counter + 1;
 }
 
-console.log("Fate exists: ",fateExists)
+console.log("Fate exists: ", fateExists)
+
+if (canBuy && fateExists) {
+    console.log("Good trip");
+} else {
+    console.log("Sorry has an error");
+}
+
+
+for (let i = 0; i < 3; i++) {
+    if (destinationList[i] == destination) {
+        fateExists = true;
+    }
+}
