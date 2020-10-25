@@ -1,5 +1,7 @@
 export class CurrentAccount {
     agency;
+    customer;
+    
     //#balance =0; proposal class fields
     _balance = 0;
 
@@ -15,5 +17,10 @@ export class CurrentAccount {
             return;
         }
         this._balance += amount;
+    }
+
+    transfer(amount, account){
+        const amountWithdrawn = this.withdrawm(amount);
+        account.deposit(amountWithdrawn);
     }
 }

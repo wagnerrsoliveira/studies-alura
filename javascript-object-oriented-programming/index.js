@@ -11,13 +11,14 @@ customer2.document = 88822233309;
 
 const currentAccountWagner = new CurrentAccount();
 currentAccountWagner.agency = 1001;
+currentAccountWagner.customer = customer1;
+currentAccountWagner.deposit(500);
 
-currentAccountWagner.deposit(100);
-currentAccountWagner.deposit(100);
-currentAccountWagner.deposit(100);
+const currentAccountRoberto = new CurrentAccount();
+currentAccountRoberto.agency = 1002;
+currentAccountRoberto.customer = customer2;
 
-const amountWithdrawm = currentAccountWagner.withdrawm(50);
-console.log(amountWithdrawm);
+currentAccountWagner.transfer(200,currentAccountRoberto)
 
 console.log(currentAccountWagner);
-
+console.log(currentAccountRoberto);
