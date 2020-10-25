@@ -20,6 +20,7 @@ export class CurrentAccount {
     }
 
     transfer(amount, account){
+        account.city = "São Paulo";
         const amountWithdrawn = this.withdrawm(amount);
         account.deposit(amountWithdrawn);
     }

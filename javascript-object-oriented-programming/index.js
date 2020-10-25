@@ -18,7 +18,9 @@ const currentAccountRoberto = new CurrentAccount();
 currentAccountRoberto.agency = 1002;
 currentAccountRoberto.customer = customer2;
 
-currentAccountWagner.transfer(200,currentAccountRoberto)
+let amount = 200;
+currentAccountWagner.transfer(amount,currentAccountRoberto)
 
+console.log("amount",amount);
 console.log(currentAccountWagner);
 console.log(currentAccountRoberto);
