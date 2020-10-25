@@ -5,11 +5,18 @@ class Customer {
 
 class CurrentAccount {
     agency;
-    balance;
+    //#balance =0; proposal class fields
+    _balance =0;
 
     withdrawm(amount) {
-        if (this.balance >= amount) {
-            this.balance -= amount;
+        if (this._balance >= amount) {
+            this._balance -= amount;
+        }
+    }
+
+    deposit(amount){
+        if(amount>0){
+            this._balance += amount;
         }
     }
 }
@@ -24,17 +31,11 @@ customer2.name = "Roberto";
 customer2.document = 88822233309;
 
 const currentAccountWagner = new CurrentAccount();
-currentAccountWagner.balance = 0;
 currentAccountWagner.agency = 1001;
-console.log(currentAccountWagner.balance);
 
-currentAccountWagner.balance = 100;
-console.log(currentAccountWagner.balance);
+currentAccountWagner.deposit(100);
 
 currentAccountWagner.withdrawm(50);
-console.log(currentAccountWagner.balance);
 
-
-console.log(customer1);
-console.log(customer2);
+console.log(currentAccountWagner);
 
