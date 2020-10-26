@@ -1,9 +1,24 @@
+import { Customer } from "./Customer.js";
+
 export class CurrentAccount {
     agency;
-    customer;
+    _customer;
     
+    set customer(newCustomer){
+        if(newCustomer instanceof Customer){
+            this._customer = newCustomer;
+        }
+    }
+
+    get customer(){
+        return this._customer;
+    }
     //#balance =0; proposal class fields
     _balance = 0;
+
+    get balance(){
+        return this._balance;
+    }
 
     withdrawm(amount) {
         if (this._balance >= amount) {
