@@ -3,21 +3,26 @@ import { Customer } from "./Customer.js";
 export class CurrentAccount {
     agency;
     _customer;
+    //#balance =0; proposal class fields
+    _balance = 0;
     
     set customer(newCustomer){
         if(newCustomer instanceof Customer){
             this._customer = newCustomer;
         }
     }
-
+    
     get customer(){
         return this._customer;
     }
-    //#balance =0; proposal class fields
-    _balance = 0;
 
     get balance(){
         return this._balance;
+    }
+
+    constructor(customer,agency){
+        this.agency = agency;
+        this.customer = customer;
     }
 
     withdrawm(amount) {
