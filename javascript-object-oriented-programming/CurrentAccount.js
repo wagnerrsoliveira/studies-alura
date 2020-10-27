@@ -1,28 +1,30 @@
 import { Customer } from "./Customer.js";
 
 export class CurrentAccount {
+    static accountAmount = 0;
     agency;
     _customer;
     //#balance =0; proposal class fields
     _balance = 0;
-    
-    set customer(newCustomer){
-        if(newCustomer instanceof Customer){
+
+    set customer(newCustomer) {
+        if (newCustomer instanceof Customer) {
             this._customer = newCustomer;
         }
     }
-    
-    get customer(){
+
+    get customer() {
         return this._customer;
     }
 
-    get balance(){
+    get balance() {
         return this._balance;
     }
 
-    constructor(customer,agency){
+    constructor(customer, agency) {
         this.agency = agency;
         this.customer = customer;
+        CurrentAccount.accountAmount += 1;
     }
 
     withdrawm(amount) {
@@ -39,7 +41,7 @@ export class CurrentAccount {
         this._balance += amount;
     }
 
-    transfer(amount, account){
+    transfer(amount, account) {
         account.city = "São Paulo";
         const amountWithdrawn = this.withdrawm(amount);
         account.deposit(amountWithdrawn);
