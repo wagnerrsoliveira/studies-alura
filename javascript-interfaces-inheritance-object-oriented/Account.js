@@ -6,10 +6,28 @@ export class Account{
         this._agency = agency;
     }
 
+    set customer(newCustomer) {
+        if (newCustomer instanceof Customer) {
+            this._customer = newCustomer;
+        }
+    }
+
+    get customer() {
+        return this._customer;
+    }
+
+    get balance() {
+        return this._balance;
+    }
+
     withdrawm(amount) {
-        if (this._balance >= amount) {
-            this._balance -= amount;
-            return amount;
+
+        let rate = 1;
+        const amountWithdrawn = rate * amount;
+
+        if (this._balance >= amountWithdrawn) {
+            this._balance -= amountWithdrawn;
+            return amountWithdrawn;
         }
     }
 
