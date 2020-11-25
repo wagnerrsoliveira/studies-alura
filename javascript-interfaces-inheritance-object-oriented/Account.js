@@ -42,4 +42,8 @@ export class Account{
         const amountWithdrawn = this.withdrawm(amount);
         account.deposit(amountWithdrawn);
     }
+
+    test(){
+        console.log('Test into Account class...')
+    }
 }

@@ -10,6 +10,7 @@ currentAccountWagner.deposit(500);
 currentAccountWagner.withdrawm(100);
 
 const savingsAccountWagner = new SavingsAccount(50,customer1, 1001);
+savingsAccountWagner.withdrawm(10);
 
 console.log(savingsAccountWagner);
 console.log(currentAccountWagner);

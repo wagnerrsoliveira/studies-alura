@@ -7,4 +7,20 @@ export class CurrentAccount extends Account {
         super(0, customer, agency);
         CurrentAccount.accountAmount += 1;
     }
+
+    withdrawm(amount) {
+
+        let rate = 1.1;
+        const amountWithdrawn = rate * amount;
+
+        if (this._balance >= amountWithdrawn) {
+            this._balance -= amountWithdrawn;
+            return amountWithdrawn;
+        }
+    }
+
+    test(){
+        super.test();
+        console.log("Test into CurrentAcount class...")
+    }
 }
