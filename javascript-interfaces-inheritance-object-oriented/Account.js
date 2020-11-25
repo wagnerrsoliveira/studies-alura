@@ -21,14 +21,19 @@ export class Account{
     }
 
     withdrawm(amount) {
-
         let rate = 1;
+        return this._withdrawm(amount, rate);
+    }
+
+    _withdrawm(amount, rate){
         const amountWithdrawn = rate * amount;
 
         if (this._balance >= amountWithdrawn) {
             this._balance -= amountWithdrawn;
             return amountWithdrawn;
         }
+
+        return 0;
     }
 
     deposit(amount) {
@@ -41,9 +46,5 @@ export class Account{
     transfer(amount, account) {
         const amountWithdrawn = this.withdrawm(amount);
         account.deposit(amountWithdrawn);
-    }
-
-    test(){
-        console.log('Test into Account class...')
     }
 }

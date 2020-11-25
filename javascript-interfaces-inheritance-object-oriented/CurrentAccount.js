@@ -8,19 +8,9 @@ export class CurrentAccount extends Account {
         CurrentAccount.accountAmount += 1;
     }
 
+    /*@Overwrite*/
     withdrawm(amount) {
-
         let rate = 1.1;
-        const amountWithdrawn = rate * amount;
-
-        if (this._balance >= amountWithdrawn) {
-            this._balance -= amountWithdrawn;
-            return amountWithdrawn;
-        }
-    }
-
-    test(){
-        super.test();
-        console.log("Test into CurrentAcount class...")
+        return this._withdrawm(amount, rate);
     }
 }
