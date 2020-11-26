@@ -1,12 +1,14 @@
-export class Account{
+//Abstract class
+export class Account {
 
-    constructor(initialBalance, customer, agency){
+    constructor(initialBalance, customer, agency) {
+        if (this.constructor === Account) {
+            throw new Error("You should't instantiate an Account type object");
+        }
+
         this._balance = initialBalance;
         this._customer = customer;
         this._agency = agency;
-        if(this.constructor== Account){
-            console.log("You should't instantiate an Account type object");
-        }
     }
 
     set customer(newCustomer) {
@@ -28,7 +30,7 @@ export class Account{
         return this._withdrawm(amount, rate);
     }
 
-    _withdrawm(amount, rate){
+    _withdrawm(amount, rate) {
         const amountWithdrawn = rate * amount;
 
         if (this._balance >= amountWithdrawn) {
