@@ -4,6 +4,9 @@ export class Account{
         this._balance = initialBalance;
         this._customer = customer;
         this._agency = agency;
+        if(this.constructor== Account){
+            console.log("You should't instantiate an Account type object");
+        }
     }
 
     set customer(newCustomer) {
