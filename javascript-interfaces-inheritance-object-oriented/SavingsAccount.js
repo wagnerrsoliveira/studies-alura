@@ -6,4 +6,9 @@ export class SavingsAccount extends Account {
         super(initialBalance, customer, agency);
     }
 
+    /*@Overwrite*/
+    withdrawm(amount) {
+        let rate = 1.02;
+        return this._withdrawm(amount, rate);
+    }
 }

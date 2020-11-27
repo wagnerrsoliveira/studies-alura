@@ -3,7 +3,7 @@ export class Account {
 
     constructor(initialBalance, customer, agency) {
         if (this.constructor === Account) {
-            throw new Error("You should't instantiate an Account type object");
+            throw new Error("You should't instantiate an Account type object, This is a abstract class.");
         }
 
         this._balance = initialBalance;
@@ -25,9 +25,9 @@ export class Account {
         return this._balance;
     }
 
+    /**Abstract Method */
     withdrawm(amount) {
-        let rate = 1;
-        return this._withdrawm(amount, rate);
+       throw new   Error("The withdrawm is a abstract method.")
     }
 
     _withdrawm(amount, rate) {
