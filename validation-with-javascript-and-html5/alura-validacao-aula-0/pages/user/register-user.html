@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../style/theme.css" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Register User</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Register User</h1>
+      <form id="form" method="get" action="./register-success.html">
+        <hr class="divider" />
+        <h2 class="subtitle">Access information</h2>
+        <div class="input-container">
+          <label class="label" for="email">
+            Email
+            <span class="info">(Required)</span>
+          </label>
+          <input class="input" name="email" id="email" required type="email" />
+        </div>
+        <div class="input-container">
+          <label class="label" for="password">Password <span class="info">(Required)</span></label>
+          <input class="input" name="password" id="password" required type="password" minlength="4" />
+        </div>
+        <hr class="divider" />
+        <h2 class="subtitle">Personal infomation</h2>
+        <div class="input-container">
+          <label class="label" for="dateOfBirth">Date of birth <span class="info">(Required)</span></label>
+          <input class="input" name="dateOfBirth" id="dateOfBirth" />
+        </div>
+        <div class="input-container">
+          <label class="label" for="cpf">CPf <span class="info">(Required)</span></label>
+          <input class="input" name="cpf" id="cpf" required/>
+        </div>
+        <div class="input-container">
+          <label class="label" for="rg">RG <span class="info">(Required)</span></label>
+          <input class="input" name="rg" id="rg" required/>
+        </div>
+        <hr class="divider" />
+        <h2 class="subtitle">Address</h2>
+        <div class="input-container">
+          <label class="label" for="zipCode">Zip code <span class="info">(Required)</span></label>
+          <input class="input" name="zipCode" id="zipCode" required/>
+        </div>
+        <div class="input-container">
+          <label class="label" for="publicPlace">Public place <span class="info">(Required)</span></label>
+          <input class="input" name="publicPlace" id="publicPlace" required/>
+        </div>
+        <div class="input-container">
+          <label class="label" for="city">City <span class="info">(Required)</span></label>
+          <input class="input" name="city" id="city" required/>
+        </div>
+        <div class="input-container">
+          <label class="label" for="state">State <span class="info">(Required)</span></label>
+          <input class="input" name="state" id="state" required/>
+        </div>
+        <div class="button-container">
+          <button class="button button-blue" type="submit" id="buttonSubmit">
+            Register User
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
