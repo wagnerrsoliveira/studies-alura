@@ -5,6 +5,14 @@ export class Employee{
         this._document = document;
 
         this._bonus = 1;
+        this._password;
+    }
+
+    get password(){
+        return this._password;
     }
     
+    registerPassword(password){
+        this._password = password;
+    }
 }

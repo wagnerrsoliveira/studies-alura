@@ -1,13 +1,15 @@
+import { AuthenticationSystem } from './AuthenticationSystem.js';
 import { Customer } from './Customer.js';
-import { CurrentAccount } from './Account/CurrentAccount.js';
-import { SavingsAccount } from './Account/SavingsAccount.js';
-import { Account } from './Account/Account.js';
+import { Director } from './Employee/Director.js';
+import { Manager } from './Employee/Manager.js';
 
-const customer1 = new Customer("Wagner",11122233309);
+const director = new Director("Rodrigo", 10000, 12345678900);
+director.registerPassword("123456789");
 
-const currentAccountWagner = new CurrentAccount(customer1,1001);
-const savingsAccountWagner = new SavingsAccount(50,customer1, 1001);
-const account = new Account(0, customer1, 1001);
+const manager = new Manager("Ricardo", 5000, 12378945601);
+manager.registerPassword("123")
 
+const isLogged = AuthenticationSystem.login(manager, "123");
 
-console.log(account)
+console.log(isLogged);
+
