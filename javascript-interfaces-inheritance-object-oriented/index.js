@@ -15,5 +15,5 @@ const isDirectorLogged = AuthenticationSystem.login(director, "123456789");
 const isManagerLogged = AuthenticationSystem.login(manager, "123");
 const isCustomerLogged = AuthenticationSystem.login(customer, "456");
 
-console.log(isDirectorLogged, isManagerLogged);
+console.log(isDirectorLogged, isManagerLogged, isCustomerLogged);
 
