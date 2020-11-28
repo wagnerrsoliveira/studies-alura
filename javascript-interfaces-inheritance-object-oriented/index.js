@@ -1,7 +1,7 @@
 import { Customer } from './Customer.js';
-import { CurrentAccount } from './CurrentAccount.js';
-import { SavingsAccount } from './SavingsAccount.js';
-import { Account } from './Account.js';
+import { CurrentAccount } from './Account/CurrentAccount.js';
+import { SavingsAccount } from './Account/SavingsAccount.js';
+import { Account } from './Account/Account.js';
 
 const customer1 = new Customer("Wagner",11122233309);
 
