@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../style/theme.css" />
+  <script src="../../services/app.js" type="module"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Register User</title>
 </head>
@@ -31,7 +32,7 @@
         <h2 class="subtitle">Personal infomation</h2>
         <div class="input-container">
           <label class="label" for="dateOfBirth">Date of birth <span class="info">(Required)</span></label>
-          <input class="input" name="dateOfBirth" id="dateOfBirth" type="date" min="1901-01-01"/>
+          <input class="input" name="dateOfBirth" id="dateOfBirth" type="date" min="1901-01-01" data-type="dateOfBirth"/>
         </div>
         <div class="input-container">
           <label class="label" for="cpf">CPf <span class="info">(Required)</span></label>
