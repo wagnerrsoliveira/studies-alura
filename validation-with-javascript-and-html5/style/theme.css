@@ -85,11 +85,11 @@ body {
   color: #333;
 }
 
-.input.possui-erro-validacao {
+.input.has-error-validation {
   border-color: #f73859;
 }
 
-.erro-validacao {
+.error-validation {
   margin-top: 3px;
   color: #f73859;
   font-size: 14px;
