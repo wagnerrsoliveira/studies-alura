@@ -1,5 +1,53 @@
 import { validateDateOfBirth } from './validateDateOfBirth.js';
 
+const returnErrorMessage = (type, validity) => {
+    console.log(validity,type)
+    let errorMessage = "";
+    const typeError = ["valueMissing", "typeMismatch", "tooShort", "rangeUnderFlow","customError"];
+
+    const errorMessages = {
+        email:  { 
+            valueMissing: "E-mail is required",
+            typeMismatch: "This is a invalid e-mail",
+        },
+        password:{
+            valueMissing: "Password is required",
+            tooShort: "The password should have more than 4 characters."
+        },
+        dateOfBirth:{
+            valueMissing: "Date of birth is required",
+            rangeUnderFlow: "Date should have more than 01-01-1901",
+            customError: "The minimal age is 18 years old"
+        },
+        cpf:{
+            valueMissing: "CPF is required", 
+        },
+        rg:{
+            valueMissing: "RG is required", 
+        },
+        zipCode:{
+            valueMissing: "Zip Code is required", 
+        },
+        publicPlace:{
+            valueMissing: "Public place is required", 
+        },
+        city:{
+            valueMissing: "City is required", 
+        },
+        state:{
+            valueMissing: "State is required", 
+        }
+    };
+
+    typeError.forEach(erro => {
+        if(validity[erro]){
+            errorMessage = errorMessages[type][erro];
+        }
+    });
+
+    return errorMessage;
+}
+
 export const inputValidate = (input, addError = true) => {
     const classElementError = "error-validation";
     const classInputError = "has-error-validation";
@@ -26,7 +74,9 @@ export const inputValidate = (input, addError = true) => {
     if (!elementIsValid) {
         // is invalid
         elementError.className = classElementError;
-        elementError.textContent = "There is an error here!";
+        elementError.textContent = returnErrorMessage(
+            type, input.validity
+        );
         if(addError){
             input.after(elementError);
             input.classList.add(classInputError);
