@@ -1,46 +1,48 @@
 import { validateDateOfBirth } from './validateDateOfBirth.js';
+import { validateCpf } from './validateCpf.js';
 
 const returnErrorMessage = (type, validity) => {
-    console.log(validity,type)
+    console.log(validity, type)
     let errorMessage = "";
-    const typeError = ["valueMissing", "typeMismatch", "tooShort", "rangeUnderFlow","customError"];
+    const typeError = ["valueMissing", "typeMismatch", "tooShort", "rangeUnderFlow", "customError"];
 
     const errorMessages = {
-        email:  { 
+        email: {
             valueMissing: "E-mail is required",
             typeMismatch: "This is a invalid e-mail",
         },
-        password:{
+        password: {
             valueMissing: "Password is required",
             tooShort: "The password should have more than 4 characters."
         },
-        dateOfBirth:{
+        dateOfBirth: {
             valueMissing: "Date of birth is required",
             rangeUnderFlow: "Date should have more than 01-01-1901",
             customError: "The minimal age is 18 years old"
         },
-        cpf:{
-            valueMissing: "CPF is required", 
+        cpf: {
+            valueMissing: "CPF is required",
+            customError: "CPF is invalid"
         },
-        rg:{
-            valueMissing: "RG is required", 
+        rg: {
+            valueMissing: "RG is required",
         },
-        zipCode:{
-            valueMissing: "Zip Code is required", 
+        zipCode: {
+            valueMissing: "Zip Code is required",
         },
-        publicPlace:{
-            valueMissing: "Public place is required", 
+        publicPlace: {
+            valueMissing: "Public place is required",
         },
-        city:{
-            valueMissing: "City is required", 
+        city: {
+            valueMissing: "City is required",
         },
-        state:{
-            valueMissing: "State is required", 
+        state: {
+            valueMissing: "State is required",
         }
     };
 
     typeError.forEach(erro => {
-        if(validity[erro]){
+        if (validity[erro]) {
             errorMessage = errorMessages[type][erro];
         }
     });
@@ -65,6 +67,7 @@ export const inputValidate = (input, addError = true) => {
     console.log(type, input)
     const specificValidators = {
         dateOfBirth: input => validateDateOfBirth(input),
+        cpf: input => validateCpf(input),
     };
 
     if (specificValidators[type]) {
@@ -77,7 +80,7 @@ export const inputValidate = (input, addError = true) => {
         elementError.textContent = returnErrorMessage(
             type, input.validity
         );
-        if(addError){
+        if (addError) {
             input.after(elementError);
             input.classList.add(classInputError);
         }
