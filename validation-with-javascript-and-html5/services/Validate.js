@@ -4,7 +4,7 @@ import { validateCpf } from './validateCpf.js';
 const returnErrorMessage = (type, validity) => {
     console.log(validity, type)
     let errorMessage = "";
-    const typeError = ["valueMissing", "typeMismatch", "tooShort", "rangeUnderFlow", "customError"];
+    const typeError = ["valueMissing", "typeMismatch", "tooShort", "rangeUnderFlow", "customError", "patternMismatch"];
 
     const errorMessages = {
         email: {
@@ -29,6 +29,7 @@ const returnErrorMessage = (type, validity) => {
         },
         zipCode: {
             valueMissing: "Zip Code is required",
+            patternMismatch: "Zip Code is invalid"
         },
         publicPlace: {
             valueMissing: "Public place is required",
