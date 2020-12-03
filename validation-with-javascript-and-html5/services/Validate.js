@@ -1,5 +1,6 @@
 import { validateDateOfBirth } from './validateDateOfBirth.js';
 import { validateCpf } from './validateCpf.js';
+import { getAddress } from './getAddress.js';
 
 const returnErrorMessage = (type, validity) => {
     console.log(validity, type)
@@ -29,7 +30,8 @@ const returnErrorMessage = (type, validity) => {
         },
         zipCode: {
             valueMissing: "Zip Code is required",
-            patternMismatch: "Zip Code is invalid"
+            patternMismatch: "Zip Code is invalid",
+            customError:"Zip Code is invalid"
         },
         publicPlace: {
             valueMissing: "Public place is required",
@@ -69,6 +71,7 @@ export const inputValidate = (input, addError = true) => {
     const specificValidators = {
         dateOfBirth: input => validateDateOfBirth(input),
         cpf: input => validateCpf(input),
+        zipCode: input => getAddress(input)
     };
 
     if (specificValidators[type]) {
