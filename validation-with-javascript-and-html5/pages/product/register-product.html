@@ -4,38 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../style/theme.css" />
+    <script src="https://github.com/codermarcos/simple-mask-money/releases/download/v3.0.0/simple-mask-money.js"></script> 
+    <script src="../../services/app.js" type="module"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Cadastro de Produto</title>
+    <title>Register Product</title>
   </head>
 
   <body>
     <div class="container">
       <div class="box">
-        <h1>Cadastro de Produto</h1>
-        <form id="form" method="get" action="./cadastro-success.html">
+        <h1>Register Product</h1>
+        <form id="form" method="get" action="./register-success.html">
           <div class="input-container">
-            <label class="label" for="preco"
-              >Preço <span class="info">(Necessário)</span></label
+            <label class="label" for="price"
+              >Price <span class="info">(Required)</span></label
             >
-            <input class="input" name="preco" id="preco" autofocus />
+            <input class="input" required data-type="price" name="price" id="price" autofocus />
           </div>
           <div class="input-container">
-            <label class="label" for="nomeProduto"
-              >Nome <span class="info">(Necessário)</span></label
+            <label class="label" for="nameProduct"
+              >Name <span class="info">(Required)</span></label
             >
-            <input class="input" name="nomeProduto" id="nomeProduto" />
+            <input class="input" required data-type="nameProduct" name="nameProduct" id="nameProduct" />
           </div>
           <div class="input-container">
-            <label class="label" for="descricaoProduto">Descrição</label>
+            <label class="label" for="descriptionProduct">Description</label>
             <input
               class="input"
-              name="descricaoProduto"
-              id="descricaoProduto"
+              name="descriptionProduct"
+              id="descriptionProduct"
             />
           </div>
           <div class="button-container">
             <button class="button button-blue" type="submit" id="buttonSubmit">
-              Cadastrar Produto
+              Register Product
             </button>
           </div>
         </form>

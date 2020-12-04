@@ -1,6 +1,7 @@
 import { validateDateOfBirth } from './validateDateOfBirth.js';
 import { validateCpf } from './validateCpf.js';
 import { getAddress } from './getAddress.js';
+import { validatePrice } from './validatePrice.js';
 
 const returnErrorMessage = (type, validity) => {
     console.log(validity, type)
@@ -41,6 +42,13 @@ const returnErrorMessage = (type, validity) => {
         },
         state: {
             valueMissing: "State is required",
+        },
+        price: {
+            valueMissing: "Price is required",
+            customError:"The price have to be more than R$ O" 
+        },
+        nameProduct: {
+            valueMissing: "Product name is required",                       
         }
     };
 
@@ -71,7 +79,8 @@ export const inputValidate = (input, addError = true) => {
     const specificValidators = {
         dateOfBirth: input => validateDateOfBirth(input),
         cpf: input => validateCpf(input),
-        zipCode: input => getAddress(input)
+        zipCode: input => getAddress(input),
+        price: input => validatePrice(input)
     };
 
     if (specificValidators[type]) {
