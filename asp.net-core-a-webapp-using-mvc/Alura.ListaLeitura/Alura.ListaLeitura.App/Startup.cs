@@ -23,10 +23,12 @@ namespace Alura.ListaLeitura.App
                 {"/Books/Read",_repo.Lidos.ToString()}
             };
 
-            if(paths.ContainsKey(context.Request.Path)){
+            if (paths.ContainsKey(context.Request.Path))
+            {
                 return context.Response.WriteAsync(paths[context.Request.Path]);
             }
 
+            context.Response.StatusCode = 404;
             return context.Response.WriteAsync("Path is not found");
         }
 
