@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Alura.ListaLeitura.App.Negocio;
 using Alura.ListaLeitura.App.Repositorio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +22,7 @@ namespace Alura.ListaLeitura.App
             builder.MapRoute("Books/ToRead", BooksToRead);
             builder.MapRoute("Books/Reading", BooksReading);
             builder.MapRoute("Books/Read", BooksRead);
+            builder.MapRoute("Register/NewBook/{name}/{author}", NewBookToRead);
             var routes = builder.Build();
             app.UseRouter(routes);
             // app.Run(Routing);
@@ -60,6 +62,18 @@ namespace Alura.ListaLeitura.App
         {
             var _repo = new LivroRepositorioCSV();
             return context.Response.WriteAsync(_repo.Lidos.ToString());
+        }
+
+        public Task NewBookToRead(HttpContext context)
+        {
+            var book = new Livro(){
+                Titulo = context.GetRouteValue("name").ToString(),
+                Autor =context.GetRouteValue("author").ToString(),    
+            };
+            
+            var _repo = new LivroRepositorioCSV();
+            _repo.Incluir(book);
+            return context.Response.WriteAsync("Registered book successfully");
         }
     }
 }
