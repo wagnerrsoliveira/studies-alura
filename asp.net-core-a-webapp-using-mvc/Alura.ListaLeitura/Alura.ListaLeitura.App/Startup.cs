@@ -26,11 +26,27 @@ namespace Alura.ListaLeitura.App
             builder.MapRoute("Books/Read", BooksRead);
             builder.MapRoute("Register/NewBook/{name}/{author}", NewBookToRead);
             builder.MapRoute("Books/Details/{id:int}", ShowDetail);
+            builder.MapRoute("Register/NewBook", ShowForm);
+            
             var routes = builder.Build();
             app.UseRouter(routes);
             // app.Run(Routing);
         }
 
+        private Task ShowForm(HttpContext context)
+        {
+            var html = @"
+            <html>
+            <form>
+                <input/>
+                <input/>
+                <button>Salve</button>
+            </form>
+            </html>
+            ";
+
+            return context.Response.WriteAsync(html);
+        }
 
         public Task Routing(HttpContext context)
         {
