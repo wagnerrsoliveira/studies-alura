@@ -27,19 +27,32 @@ namespace Alura.ListaLeitura.App
             builder.MapRoute("Register/NewBook/{name}/{author}", NewBookToRead);
             builder.MapRoute("Books/Details/{id:int}", ShowDetail);
             builder.MapRoute("Register/NewBook", ShowForm);
-            
+            builder.MapRoute("Register/Add", ProcessForm);
             var routes = builder.Build();
             app.UseRouter(routes);
             // app.Run(Routing);
+        }
+
+        private Task ProcessForm(HttpContext context)
+        {
+             var book = new Livro()
+            {
+                Titulo = context.Request.Query["name"].First(),
+                Autor = context.Request.Query["author"].First(),
+            };
+
+            var _repo = new LivroRepositorioCSV();
+            _repo.Incluir(book);
+            return context.Response.WriteAsync("Registered book successfully");
         }
 
         private Task ShowForm(HttpContext context)
         {
             var html = @"
             <html>
-            <form>
-                <input/>
-                <input/>
+            <form action='/Register/Add'>
+                <input name='name'/>
+                <input name='author'/>
                 <button>Salve</button>
             </form>
             </html>
