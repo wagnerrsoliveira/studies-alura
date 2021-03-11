@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Alura.ListaLeitura.App.Negocio;
@@ -48,17 +49,19 @@ namespace Alura.ListaLeitura.App
 
         private Task ShowForm(HttpContext context)
         {
-            var html = @"
-            <html>
-            <form action='/Register/Add'>
-                <input name='name'/>
-                <input name='author'/>
-                <button>Salve</button>
-            </form>
-            </html>
-            ";
+            var html = LoadHTMLFile("form");
 
             return context.Response.WriteAsync(html);
+        }
+
+        private string LoadHTMLFile(string fileName)
+        {
+            var fullNameFile = $"HTML/{fileName}.html";
+
+            using(var file = File.OpenText(fullNameFile))
+            {
+                return file.ReadToEnd();
+            }
         }
 
         public Task Routing(HttpContext context)
