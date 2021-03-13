@@ -85,7 +85,7 @@ namespace Alura.ListaLeitura.App
 
         public Task BooksToRead(HttpContext context)
         {
-            var html = LoadHTMLFile("to-read");
+            var html = LoadHTMLFile("list");
             var _repo = new LivroRepositorioCSV();
 
             foreach (var book in _repo.ParaLer.Livros)
@@ -97,13 +97,28 @@ namespace Alura.ListaLeitura.App
         }
         public Task BooksReading(HttpContext context)
         {
+            var html = LoadHTMLFile("list");
             var _repo = new LivroRepositorioCSV();
-            return context.Response.WriteAsync(_repo.Lendo.ToString());
+
+            foreach (var book in _repo.Lendo.Livros)
+            {
+                html = html.Replace("#NEW-ITEM#", $"<li>{book.Titulo} - {book.Autor}</li>#NEW-ITEM#");
+            }
+            html = html.Replace("#NEW-ITEM#", "");
+            return context.Response.WriteAsync(html);
         }
         public Task BooksRead(HttpContext context)
         {
+            var html = LoadHTMLFile("list");
+
             var _repo = new LivroRepositorioCSV();
-            return context.Response.WriteAsync(_repo.Lidos.ToString());
+
+            foreach (var book in _repo.Lidos.Livros)
+            {
+                html = html.Replace("#NEW-ITEM#", $"<li>{book.Titulo} - {book.Autor}</li>#NEW-ITEM#");
+            }
+            html = html.Replace("#NEW-ITEM#", "");
+            return context.Response.WriteAsync(html);
         }
 
         public Task NewBookToRead(HttpContext context)
