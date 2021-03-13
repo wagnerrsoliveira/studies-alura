@@ -31,12 +31,11 @@ namespace Alura.ListaLeitura.App
             builder.MapRoute("Register/Add", ProcessForm);
             var routes = builder.Build();
             app.UseRouter(routes);
-            // app.Run(Routing);
         }
 
         private Task ProcessForm(HttpContext context)
         {
-             var book = new Livro()
+            var book = new Livro()
             {
                 Titulo = context.Request.Form["name"].First(),
                 Autor = context.Request.Form["author"].First(),
@@ -58,7 +57,7 @@ namespace Alura.ListaLeitura.App
         {
             var fullNameFile = $"HTML/{fileName}.html";
 
-            using(var file = File.OpenText(fullNameFile))
+            using (var file = File.OpenText(fullNameFile))
             {
                 return file.ReadToEnd();
             }
@@ -86,8 +85,15 @@ namespace Alura.ListaLeitura.App
 
         public Task BooksToRead(HttpContext context)
         {
+            var html = LoadHTMLFile("to-read");
             var _repo = new LivroRepositorioCSV();
-            return context.Response.WriteAsync(_repo.ParaLer.ToString());
+
+            foreach (var book in _repo.ParaLer.Livros)
+            {
+                html = html.Replace("#NEW-ITEM#", $"<li>{book.Titulo} - {book.Autor}</li>#NEW-ITEM#");
+            }
+            html = html.Replace("#NEW-ITEM#", "");
+            return context.Response.WriteAsync(html);
         }
         public Task BooksReading(HttpContext context)
         {
