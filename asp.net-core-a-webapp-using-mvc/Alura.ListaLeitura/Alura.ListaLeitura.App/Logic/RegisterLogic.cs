@@ -11,7 +11,7 @@ namespace Alura.ListaLeitura.App.Logic
     public class RegisterLogic
     {     
         
-        public static Task ProcessForm(HttpContext context)
+        public static Task Insert(HttpContext context)
         {
             var book = new Livro()
             {
@@ -31,7 +31,7 @@ namespace Alura.ListaLeitura.App.Logic
             return context.Response.WriteAsync(html);
         }
 
-        public static Task NewBookToRead(HttpContext context)
+        public static Task NewBook(HttpContext context)
         {
             var book = new Livro()
             {

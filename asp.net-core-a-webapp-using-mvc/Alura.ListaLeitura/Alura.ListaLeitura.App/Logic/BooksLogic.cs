@@ -22,25 +22,25 @@ namespace Alura.ListaLeitura.App.Logic
             return html.Replace("#NEW-ITEM#", "");
         }      
 
-        public static Task BooksToRead(HttpContext context)
+        public static Task ToRead(HttpContext context)
         {
             var _repo = new LivroRepositorioCSV();
             var html = LoadList(_repo.ParaLer.Livros);
             return context.Response.WriteAsync(html);
         }
-        public static Task BooksReading(HttpContext context)
+        public static Task Reading(HttpContext context)
         {
             var _repo = new LivroRepositorioCSV();
             var html = LoadList(_repo.Lendo.Livros);
             return context.Response.WriteAsync(html);
         }
-        public static Task BooksRead(HttpContext context)
+        public static Task Read(HttpContext context)
         {
             var _repo = new LivroRepositorioCSV();
              var html = LoadList(_repo.Lidos.Livros);
             return context.Response.WriteAsync(html);
         }
-         public static Task ShowDetail(HttpContext context)
+         public static Task Detail(HttpContext context)
         {
             int id = Convert.ToInt32(context.GetRouteValue("id"));
             var _repo = new LivroRepositorioCSV();
