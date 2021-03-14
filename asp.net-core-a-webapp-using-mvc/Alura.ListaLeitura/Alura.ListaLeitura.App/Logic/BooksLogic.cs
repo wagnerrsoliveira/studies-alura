@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Alura.ListaLeitura.App.Logic
 {
-    public class BooksLogic
+    public class BooksController
     {
         public static string LoadList(IEnumerable<Livro> books)
         {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Alura.ListaLeitura.App.Logic
 {
-    public class RegisterLogic
+    public class RegisterController
     {     
         
         public static Task Insert(HttpContext context)
