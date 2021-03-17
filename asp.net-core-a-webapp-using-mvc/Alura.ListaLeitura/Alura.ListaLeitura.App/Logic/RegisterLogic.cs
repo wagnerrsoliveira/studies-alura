@@ -16,7 +16,7 @@ namespace Alura.ListaLeitura.App.Logic
 
         public IActionResult ShowForm()
         {
-            var html = new ViewResult { ViewName = "form.html" };
+            var html = new ViewResult { ViewName = "form" };
             return html;
         }
 
