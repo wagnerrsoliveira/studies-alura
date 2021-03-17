@@ -40,7 +40,7 @@ namespace Alura.ListaLeitura.App.Logic
              var html = LoadList(_repo.Lidos.Livros);
             return context.Response.WriteAsync(html);
         }
-         public static string Details(int id)
+         public string Details(int id)
         {
             var _repo = new LivroRepositorioCSV();
             var book = _repo.Todos.FirstOrDefault(b => b.Id == id);
