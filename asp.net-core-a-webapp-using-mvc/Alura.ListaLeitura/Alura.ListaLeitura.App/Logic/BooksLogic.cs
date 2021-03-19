@@ -11,37 +11,35 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Alura.ListaLeitura.App.Logic
 {
-    public class BooksController
+    public class BooksController: Controller
     {
-        public static string LoadList(IEnumerable<Livro> books)
-        {
-            var html = HtmlUtils.LoadHTMLFile("list");
-            foreach (var book in books)
-            {
-                html = html.Replace("#NEW-ITEM#", $"<li>{book.Titulo} - {book.Autor}</li>#NEW-ITEM#");
-            }
-            return html.Replace("#NEW-ITEM#", "");
-        }      
-
+        public IEnumerable<Livro> books { get; set; }
+               
         public IActionResult ToRead()
         {
             var _repo = new LivroRepositorioCSV();
-            var html = new ViewResult { ViewName = "list"};
-            return html;
+
+            ViewBag.books = _repo.ParaLer.Livros;
+
+            return View("list");
         }
-        public static Task Reading(HttpContext context)
+        public IActionResult Reading()
         {
-            var _repo = new LivroRepositorioCSV();
-            var html = LoadList(_repo.Lendo.Livros);
-            return context.Response.WriteAsync(html);
+           var _repo = new LivroRepositorioCSV();
+
+            ViewBag.books = _repo.Lendo.Livros;
+
+            return View("list");
         }
-        public static Task Read(HttpContext context)
+        public IActionResult Read()
         {
-            var _repo = new LivroRepositorioCSV();
-             var html = LoadList(_repo.Lidos.Livros);
-            return context.Response.WriteAsync(html);
+          var _repo = new LivroRepositorioCSV();
+
+            ViewBag.books = _repo.Lidos.Livros;
+
+            return View("list");
         }
-         public string Details(int id)
+        public string Details(int id)
         {
             var _repo = new LivroRepositorioCSV();
             var book = _repo.Todos.FirstOrDefault(b => b.Id == id);
@@ -49,5 +47,5 @@ namespace Alura.ListaLeitura.App.Logic
         }
 
     }
-    
+
 }
