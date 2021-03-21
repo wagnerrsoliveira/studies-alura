@@ -15,4 +15,11 @@ module.exports= app => {
         const attendance = req.body;
         Attendance.add(attendance, res);        
     } );
+
+    app.patch('/attendance/:id', (req, res) => {
+        const id = parseInt(req.params.id);
+
+        const values = req.body;
+        Attendance.update(id, values, res);        
+    } );
 }
