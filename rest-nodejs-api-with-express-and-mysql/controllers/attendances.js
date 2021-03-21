@@ -1,7 +1,14 @@
 const Attendance = require('../models/attendances');
 
 module.exports= app => {
-    app.get('/attendance',(req, res) => res.send("Your are on attendance route, and calling a GET") );
+    app.get('/attendance',(__, res) => {
+        Attendance.list(res);
+    } );
+
+    app.get('/attendance/:id',(req, res) => {
+        const id = parseInt(req.params.id);
+        Attendance.findById(id, res);
+    } );
 
     app.post('/attendance', (req, res) => {
       

@@ -5,8 +5,8 @@ class Attendance{
 
     add(attendance, res){
 
-        const dateCreate = moment().format('YYYY-MM-DD HH:MM:SS');
-        const date = moment(attendance.date, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS');
+        const dateCreate = moment().format('YYYY-MM-DD HH:mm:ss');
+        const date = moment(attendance.date, 'DD/MM/YYYY').format('YYYY-MM-DD HH:mm:ss');
 
         const dateIsValid = moment(date).isSameOrAfter(dateCreate);
         
@@ -43,6 +43,35 @@ class Attendance{
             });
         }
 
+    }
+
+    list(res){
+        const sql = `SELECT * FROM attendances`;
+
+        connection.query(sql, (error, result) =>{
+
+            if(error){
+                res.status(400).json(error);
+            }else{
+                res.status(200).json(result)
+            }
+
+        });
+    }
+
+    findById(id, res){
+        const sql = `SELECT * FROM attendances WHERE id=${id}`;
+
+        connection.query(sql, (error, result) =>{
+            const attendace = result[0];
+
+            if(error){
+                res.status(400).json(error);
+            }else{
+                res.status(200).json(attendace)
+            }
+
+        });
     }
 }
 
