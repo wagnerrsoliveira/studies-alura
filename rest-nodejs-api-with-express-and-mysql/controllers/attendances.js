@@ -6,8 +6,6 @@ module.exports= app => {
     app.post('/attendance', (req, res) => {
       
         const attendance = req.body;
-        Attendance.add(attendance);
-        res.send("Your are on attendance route, and calling a POST")
-        
+        Attendance.add(attendance, res);        
     } );
 }
