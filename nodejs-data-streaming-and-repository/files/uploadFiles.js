@@ -5,14 +5,16 @@ module.exports = (pathName, fileName, callbackCreatedImage) => {
     
     const typeValid = ['jpg', 'png', 'jpeg'];
     const type = path.extname(pathName);
-    const isTypeValid = typeValid.indexOf(type.substring(1));
+    const isTypeInValid = typeValid.indexOf(type.substring(1)) === -1;
     const newPath = `./assets/images/${fileName}${type}`;
 
-    if(isTypeValid === -1){
+    if(isTypeInValid){
+        const error = 'Invalid type';
         console.log('Error! Invalid type');
+        callbackCreatedImage(error);
     }else{
         fs.createReadStream(pathName)
             .pipe(fs.createWriteStream(newPath))
-            .on('finish', () => callbackCreatedImage(newPath));
+            .on('finish', () => callbackCreatedImage('', newPath));
     }
 };
