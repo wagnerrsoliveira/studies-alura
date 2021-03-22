@@ -13,7 +13,7 @@ class Pet{
                     console.log(error);
                     res.status(400).json(error)
                 }else{
-                    res.status(200).json(pet);
+                    res.status(200).json(newPet);
                 }
             });
         });

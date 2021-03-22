@@ -1,10 +1,18 @@
 const fs = require('fs');
+const path = require('path');
 
-module.exports = (path, fileName, callbackCreatedImage) => {
+module.exports = (pathName, fileName, callbackCreatedImage) => {
     
-    const newPath = `./assets/images/${fileName}`;
+    const typeValid = ['jpg', 'png', 'jpeg'];
+    const type = path.extname(pathName);
+    const isTypeValid = typeValid.indexOf(type.substring(1));
+    const newPath = `./assets/images/${fileName}${type}`;
 
-    fs.createReadStream(path)
-        .pipe(fs.createWriteStream(newPath))
-        .on('finish', () => callbackCreatedImage(newPath));
+    if(isTypeValid === -1){
+        console.log('Error! Invalid type');
+    }else{
+        fs.createReadStream(pathName)
+            .pipe(fs.createWriteStream(newPath))
+            .on('finish', () => callbackCreatedImage(newPath));
+    }
 };
