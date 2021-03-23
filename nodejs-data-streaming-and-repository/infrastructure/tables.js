@@ -8,7 +8,7 @@ class Tables{
     createAttendances(){
         const sql = `CREATE TABLE IF NOT EXISTS attendances (
             id int NOT NULL AUTO_INCREMENT, 
-            customer varchar(50) NOT NULL, 
+            customer varchar(11) NOT NULL, 
             pet varchar(20), 
             service varchar(20) NOT NULL, 
             date datetime NOT NULL, 
